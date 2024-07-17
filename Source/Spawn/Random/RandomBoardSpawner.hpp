@@ -8,6 +8,7 @@ class RandomBoardSpawner : public BoardSpawner
 public:
     using ByteValue = CellValueConverter::ByteValue;
     using RCByteContainer = std::vector<CellValueConverter::ByteValue>;
+    using RCByteMatrix = std::vector<RCByteContainer>;
 
 public:
     RandomBoardSpawner() = default;
@@ -23,7 +24,7 @@ public:
 
 private:
     Board::CellValue SpawnValue(ByteValue& rowValue, 
-        ByteValue& columnValue, ByteValue& sectionValue) const noexcept;
+        ByteValue& columnValue, ByteValue& tripleValue) const noexcept;
 
 private:
     CellValueConverter m_Converter{};
