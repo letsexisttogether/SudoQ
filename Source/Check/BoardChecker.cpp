@@ -28,6 +28,12 @@ bool BoardChecker::IsComplete() const noexcept
         }
     }
 
+    // It starts with the sub-grid at the top-left corner [0...2][0...2],
+    // then moves horizontally to the sub-grid at [0...2][3...5], 
+    // and then to [0...2][6...8]. After completing the first row of sub-grids,
+    // it moves to the next row, starting with the sub-grid at [3...5][0...2],
+    // then [3...5][3...5], and so on
+
     for (Board::RCIndex tripleRowStart = 0;
         tripleRowStart < Board::GridMaxIndex;
         tripleRowStart += Board::TripleMaxIndex)
