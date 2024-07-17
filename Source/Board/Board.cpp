@@ -45,3 +45,4 @@ const Board::Grid& Board::GetRawGrid() const noexcept
 
 
 const Board::RCIndex Board::GridMaxIndex = 9;
+const Board::RCIndex Board::TripleMaxIndex = 3;

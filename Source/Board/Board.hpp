@@ -36,6 +36,7 @@ private:
 
 public:
     static const RCIndex GridMaxIndex;
+    static const RCIndex TripleMaxIndex;
 
 private:
     Grid m_Grid{ GridMaxIndex, RowColumn(GridMaxIndex, CellValue{}) };
