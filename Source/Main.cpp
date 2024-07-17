@@ -2,13 +2,14 @@
 
 #include "Print/BoardCmdPrinter.hpp"
 #include "Spawn/Default/DefaultBoardSpawner.hpp"
+#include "Spawn/Random/RandomBoardSpawner.hpp"
 #include "Check/BoardChecker.hpp"
 
 std::int32_t main(std::int32_t argc, char** argv)
 {
     std::cout << "Hello, SudoQ" << std::endl;
 
-    std::unique_ptr<BoardSpawner> spawner{ new DefaultBoardSpawner{} };
+    std::unique_ptr<BoardSpawner> spawner{ new RandomBoardSpawner{} };
 
     const Board board{ spawner->SpawnBoard() };
 

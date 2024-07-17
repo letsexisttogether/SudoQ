@@ -1,5 +1,4 @@
 #include "RandomBoardSpawner.hpp"
-#include "Convert/CellValueConverter.hpp"
 
 Board RandomBoardSpawner::SpawnBoard() const noexcept
 {
@@ -10,36 +9,72 @@ Board RandomBoardSpawner::SpawnBoard() const noexcept
     RCByteMatrix tripleValues{ Board::TripleMaxIndex,
         RCByteContainer(Board::TripleMaxIndex, ByteValue{}) };
 
-    for (Board::RCIndex i = 0; i < Board::GridMaxIndex; ++i)
-    {
-        for (Board::RCIndex j = 0; j < Board::GridMaxIndex; ++j)
-        {
-            Board::CellValue rowValue = SpawnValue(rowValues[i], 
-                columnValues[j], tripleValues[i / 3][j / 3]);
-            board.SetCellValue(i, j, rowValue);
-        }
-    }
+    FillBoard(board, rowValues, columnValues, tripleValues);
 
     return board; 
 }
 
-Board::CellValue RandomBoardSpawner::SpawnValue(ByteValue& rowValue,
-    ByteValue& columnValue, ByteValue& tripleValue) const noexcept
+bool RandomBoardSpawner::FillBoard(Board& board, RCByteContainer& rowValues, 
+    RCByteContainer& columnValues, RCByteMatrix& tripleValues,
+    const Board::RCIndex i, const Board::RCIndex j) const noexcept
 {
-    for (Board::CellValue value = 1; value <= 9; ++value)
+    if (i == Board::GridMaxIndex)
     {
-         ByteValue cellByteValue = m_Converter.GetByteValue(value);
-
-        if (!(cellByteValue & rowValue) && !(cellByteValue & columnValue)
-            && !(cellByteValue & tripleValue))
-        {
-            rowValue |= cellByteValue;
-            columnValue |= cellByteValue;
-            tripleValue |= cellByteValue;
-
-            return value; 
-        }
+        return true;
+    }
+    if (j == Board::GridMaxIndex)
+    {
+        return FillBoard(board, rowValues, columnValues, 
+            tripleValues, i + 1, 0);
     }
 
-    return {};
+    for (Board::CellValue value = 1; value <= 9; ++value)
+    {
+        ByteValue byteValue = m_Converter.GetByteValue(value);
+
+        ByteValue& rowValue = rowValues[i];
+        ByteValue& columnValue = columnValues[j];
+        ByteValue& tripleValue = tripleValues[i / Board::TripleMaxIndex]
+            [j / Board::TripleMaxIndex];
+
+
+        if ((byteValue & rowValue) || (byteValue & columnValue)
+            || (byteValue & tripleValue))
+        {
+            continue;
+        }
+
+        board.SetCellValue(i, j, value);
+        SetValue(byteValue, rowValue, columnValue, tripleValue);
+
+        if (FillBoard(board, rowValues, columnValues, tripleValues, i, j + 1))
+        {
+            return true;
+        }
+
+        board.SetCellValue(i, j, Board::CellValue{});
+        UnsetValue(byteValue, rowValue, columnValue, tripleValue);
+
+    }
+
+    return false;
 }
+    
+void RandomBoardSpawner::SetValue(const ByteValue byteValue, 
+    ByteValue& rowValue, ByteValue& columnValue, 
+    ByteValue& tripleValue) const noexcept
+{
+    rowValue |= byteValue;
+    columnValue |= byteValue;
+    tripleValue |= byteValue; 
+}
+
+void RandomBoardSpawner::UnsetValue(const ByteValue byteValue, 
+    ByteValue& rowValue, ByteValue& columnValue, 
+    ByteValue& tripleValue) const noexcept 
+{
+    rowValue &= ~byteValue;
+    columnValue &= ~byteValue;
+    tripleValue &= ~byteValue; 
+}
+

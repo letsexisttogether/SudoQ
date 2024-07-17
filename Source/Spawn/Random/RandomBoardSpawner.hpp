@@ -23,7 +23,15 @@ public:
     RandomBoardSpawner& operator = (RandomBoardSpawner&&) = delete;
 
 private:
-    Board::CellValue SpawnValue(ByteValue& rowValue, 
+    bool FillBoard(Board& board, RCByteContainer& rowValues, 
+        RCByteContainer& columnValues, RCByteMatrix& tripleValues,
+        const Board::RCIndex i = 0, const Board::RCIndex j = 0)
+        const noexcept;
+    
+    void SetValue(const ByteValue byteValue, ByteValue& rowValue, 
+        ByteValue& columnValue, ByteValue& tripleValue) const noexcept;
+
+    void UnsetValue(const ByteValue byteValue, ByteValue& rowValue, 
         ByteValue& columnValue, ByteValue& tripleValue) const noexcept;
 
 private:
