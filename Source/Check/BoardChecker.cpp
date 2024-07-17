@@ -19,7 +19,7 @@ bool BoardChecker::IsComplete() const noexcept
             const Board::CellValue columnElement = grid[j][i];
 
             rowValue |= m_Converter.GetByteValue(rowElement);
-            columnValue |= m_Converter.GetByteValue(rowElement);
+            columnValue |= m_Converter.GetByteValue(columnElement);
         }
 
         if ((rowValue != m_ProperValue) || (columnValue != m_ProperValue))
@@ -28,19 +28,21 @@ bool BoardChecker::IsComplete() const noexcept
         }
     }
 
-    for (Board::RCIndex iHelp = 0; iHelp < Board::GridMaxIndex;
-        iHelp += Board::TripleMaxIndex)
+    for (Board::RCIndex tripleRowStart = 0;
+        tripleRowStart < Board::GridMaxIndex;
+        tripleRowStart += Board::TripleMaxIndex)
     {
-        for (Board::RCIndex jHelp = 0; jHelp < Board::GridMaxIndex;
-            jHelp += Board::TripleMaxIndex)
+        for (Board::RCIndex tripleColumnStart = 0;
+            tripleColumnStart < Board::GridMaxIndex;
+            tripleColumnStart += Board::TripleMaxIndex)
         {
             ByteValue tripleValue = 0b0;
 
-            for (Board::RCIndex i = iHelp; i < iHelp + Board::TripleMaxIndex; 
-                ++i)
+            for (Board::RCIndex i = tripleRowStart;
+                i < tripleRowStart + Board::TripleMaxIndex; ++i)
             {
-                for (Board::RCIndex j = jHelp; j < jHelp + Board::TripleMaxIndex;
-                    ++j)
+                for (Board::RCIndex j = tripleColumnStart;
+                    j < tripleColumnStart + Board::TripleMaxIndex; ++j)
                 {
                     tripleValue |= m_Converter.GetByteValue(grid[i][j]);
                 }
@@ -55,5 +57,3 @@ bool BoardChecker::IsComplete() const noexcept
 
     return true;
 }
-
-const BoardChecker::ByteValue BoardChecker::m_ProperValue = 0b111111111;

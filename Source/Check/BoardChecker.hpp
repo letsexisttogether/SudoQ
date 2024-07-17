@@ -28,10 +28,8 @@ public:
     BoardChecker& operator = (BoardChecker&&) = delete;
 
 private:
-    static const ByteValue m_ProperValue; 
-
-private:
     const Board& m_Board;
+    const ByteValue m_ProperValue{ 0b111111111 };
 
     const CellValueConverter m_Converter{};
 };
