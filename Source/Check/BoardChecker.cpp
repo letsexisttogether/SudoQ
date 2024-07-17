@@ -28,6 +28,31 @@ bool BoardChecker::IsComplete() const noexcept
         }
     }
 
+    for (Board::RCIndex iHelp = 0; iHelp < Board::GridMaxIndex;
+        iHelp += Board::TripleMaxIndex)
+    {
+        for (Board::RCIndex jHelp = 0; jHelp < Board::GridMaxIndex;
+            jHelp += Board::TripleMaxIndex)
+        {
+            ByteValue tripleValue = 0b0;
+
+            for (Board::RCIndex i = iHelp; i < iHelp + Board::TripleMaxIndex; 
+                ++i)
+            {
+                for (Board::RCIndex j = jHelp; j < jHelp + Board::TripleMaxIndex;
+                    ++j)
+                {
+                    tripleValue |= m_Converter.GetByteValue(grid[i][j]);
+                }
+            }
+
+            if (tripleValue != m_ProperValue)
+            {
+                return false;
+            }
+        }
+    }
+
     return true;
 }
 
