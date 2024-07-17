@@ -1,2 +1,4 @@
 target_sources(${PROJECT_NAME} 
-    PRIVATE BoardCmdPrinter.cpp)
+    PRIVATE BoardPrinter.cpp
+    PRIVATE Cmd/BoardCmdPrinter.cpp
+)

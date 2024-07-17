@@ -1,23 +1,20 @@
 #pragma once
 
-#include "Board/Board.hpp"
+#include "Print/BoardPrinter.hpp"
 
-class BoardCmdPrinter
+class BoardCmdPrinter : public BoardPrinter
 {
 public:
     BoardCmdPrinter() = delete;
     BoardCmdPrinter(const BoardCmdPrinter&) = delete;
     BoardCmdPrinter(BoardCmdPrinter&&) = delete;
 
-    BoardCmdPrinter(const Board& board);
+    BoardCmdPrinter(const Board& board, VisibilityGrid&& grid);
 
-    void Print() const noexcept;
+    void PrintBoard() const noexcept override;
 
     ~BoardCmdPrinter() = default;
 
     BoardCmdPrinter& operator = (const BoardCmdPrinter&) = delete;
     BoardCmdPrinter& operator = (BoardCmdPrinter&&) = delete;
-
-private:
-    const Board& m_Board;
 };
