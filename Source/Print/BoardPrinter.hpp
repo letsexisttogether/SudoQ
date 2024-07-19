@@ -14,16 +14,15 @@ public:
     BoardPrinter(const BoardPrinter&) = delete;
     BoardPrinter(BoardPrinter&&) = delete;
 
-    BoardPrinter(const Board& board, VisibilityGrid&& grid);
+    BoardPrinter(VisibilityGrid&& grid);
 
     virtual ~BoardPrinter() = default;
 
-    virtual void PrintBoard() const noexcept = 0;
+    virtual void PrintBoard(const Board& board) const noexcept = 0;
 
     BoardPrinter& operator = (const BoardPrinter&) = delete;
     BoardPrinter& operator = (BoardPrinter&&) = delete;
 
 protected:
-    const Board& m_Board;
     VisibilityGrid m_CellsVisibility;
 };

@@ -2,13 +2,13 @@
 
 #include <iostream>
 
-BoardCmdPrinter::BoardCmdPrinter(const Board& board, VisibilityGrid&& grid)
-    : BoardPrinter{ board, std::move(grid) }
+BoardCmdPrinter::BoardCmdPrinter(VisibilityGrid&& grid)
+    : BoardPrinter{ std::move(grid) }
 {}
 
-void BoardCmdPrinter::PrintBoard() const noexcept
+void BoardCmdPrinter::PrintBoard(const Board& board) const noexcept
 {
-    const Board::Grid& grid = m_Board.GetRawGrid();
+    const Board::Grid& grid = board.GetRawGrid();
 
     std::cout << '\n';
 

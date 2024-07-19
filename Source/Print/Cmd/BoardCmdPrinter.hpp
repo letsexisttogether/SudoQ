@@ -9,9 +9,9 @@ public:
     BoardCmdPrinter(const BoardCmdPrinter&) = delete;
     BoardCmdPrinter(BoardCmdPrinter&&) = delete;
 
-    BoardCmdPrinter(const Board& board, VisibilityGrid&& grid);
+    BoardCmdPrinter(VisibilityGrid&& grid);
 
-    void PrintBoard() const noexcept override;
+    void PrintBoard(const Board& board) const noexcept override;
 
     ~BoardCmdPrinter() = default;
 
