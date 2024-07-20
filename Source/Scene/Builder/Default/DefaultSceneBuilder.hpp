@@ -16,6 +16,7 @@ public:
 
     SBRef BuildBoardPrinter() noexcept override;
     SBRef BuildBoard() noexcept override;
+    SBRef BuildInputHandler() noexcept override;
 
 private:
     std::unique_ptr<BoardSpawner> m_Spawner

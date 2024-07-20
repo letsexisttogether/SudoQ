@@ -8,16 +8,15 @@ void Scene::UpdateLogic() noexcept
     std::cout << "Enter indices and a value like\n" 
         << "row column value\n";
 
-    Board::RCIndex row{};
-    Board::RCIndex column{};
-    Board::CellValue value{};
+    InputHandler::HandleData data{};
+    
+    std::cout << "Enter command:\n";
 
-    std::cin >> row >> column >> value;
+    std::cin >> data;
 
-    std::cout << "Row: " << row << " Column: " << column 
-        << " Value: " << value << std::endl;
+    std::cout << "Your command is " << data << std::endl;
 
-    Application::GetApp().SetShouldContinue(false);
+    m_InputHandler->Handle(data);
 }
 
 void Scene::UpdateGraphic() noexcept
@@ -33,4 +32,9 @@ void Scene::SetPrinter(BoardPrinter* printer) noexcept
 void Scene::SetBoard(Board&& board) noexcept
 {
     m_Board = std::move(board);
+}
+
+void Scene::SetInputHandler(InputHandler* inputHandler) noexcept
+{
+    m_InputHandler.reset(inputHandler);
 }
