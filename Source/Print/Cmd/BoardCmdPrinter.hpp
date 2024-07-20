@@ -5,7 +5,7 @@
 class BoardCmdPrinter : public BoardPrinter
 {
 public:
-    BoardCmdPrinter() = delete;
+    BoardCmdPrinter() = default;
     BoardCmdPrinter(const BoardCmdPrinter&) = delete;
     BoardCmdPrinter(BoardCmdPrinter&&) = delete;
 

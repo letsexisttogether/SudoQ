@@ -10,9 +10,7 @@ public:
     using VisibilityGrid = Board;
 
 public:
-    BoardPrinter() = delete;
-    BoardPrinter(const BoardPrinter&) = delete;
-    BoardPrinter(BoardPrinter&&) = delete;
+    BoardPrinter() = default;
 
     BoardPrinter(VisibilityGrid&& grid);
 
@@ -20,9 +18,15 @@ public:
 
     virtual void PrintBoard(const Board& board) const noexcept = 0;
 
-    BoardPrinter& operator = (const BoardPrinter&) = delete;
-    BoardPrinter& operator = (BoardPrinter&&) = delete;
+    void SetVisibility(Board::RCIndex row, Board::RCIndex column,
+        const bool isVisible) noexcept;
+
 
 protected:
-    VisibilityGrid m_CellsVisibility;
+    VisibilityGrid m_CellsVisibility
+    { 
+        { 
+            Board::GridMaxIndex, Board::RowColumn(Board::GridMaxIndex, true)
+        } 
+    };
 };
