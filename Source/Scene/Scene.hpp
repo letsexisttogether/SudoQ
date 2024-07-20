@@ -18,9 +18,13 @@ public:
     void UpdateGraphic() noexcept;
 
     void SetPrinter(BoardPrinter* printer) noexcept;
+    BoardPrinter* const GetPrinter() noexcept;
+
     void SetBoard(Board&& board) noexcept;
+    const Board& GetBoard() const noexcept;
 
     void SetInputHandler(InputHandler* inputHandler) noexcept;
+    InputHandler* const GetInputHandler() noexcept;
 
     Scene& operator = (const Scene&) = delete;
     Scene& operator = (Scene&&) = default;
