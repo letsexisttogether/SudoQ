@@ -5,12 +5,15 @@
 class Application
 {
 public:
+    using ScenePtr = std::shared_ptr<Scene>;
+
+public:
     static Application& GetApp() noexcept;
 
 public:
     void DoTheHardWork() noexcept;
 
-    void SetScene(Scene&& scene) noexcept;
+    void SetScene(const ScenePtr scene) noexcept;
 
     void SetShouldContinue(const bool shouldContinue) noexcept;
 
@@ -22,7 +25,7 @@ private:
     ~Application() = default;
 
 private:
-    Scene m_Scene{};
+    ScenePtr m_Scene{};
 
     bool m_ShouldContinue{ true };
 };

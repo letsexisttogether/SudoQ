@@ -13,17 +13,17 @@ void Application::DoTheHardWork() noexcept
 
     while(m_ShouldContinue)
     {
-        m_Scene.UpdateGraphic();
+        m_Scene->UpdateGraphic();
 
-        m_Scene.UpdateLogic();
+        m_Scene->UpdateLogic();
     }
 
     // Do the CleanUp()
 }
 
-void Application::SetScene(Scene&& scene) noexcept
+void Application::SetScene(const ScenePtr scene) noexcept
 {
-    m_Scene = std::move(scene);
+    m_Scene = scene;
 }
 
 void Application::SetShouldContinue(const bool shouldContinue) noexcept
