@@ -2,7 +2,7 @@
 
 #include <memory>
 
-#include "Scene/Bulider/SceneBuilder.hpp"
+#include "Scene/Builder/SceneBuilder.hpp"
 #include "Spawn/Random/RandomBoardSpawner.hpp"
 
 class DefaultSceneBuilder : public SceneBuilder

@@ -18,6 +18,9 @@ public:
 
     ScenePtr GetResult() noexcept;
 
+protected:
+    void CreateIfOut() noexcept;
+
 private:
     void Reset() noexcept;
 
