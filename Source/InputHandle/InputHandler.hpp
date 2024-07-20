@@ -12,15 +12,17 @@ public:
 public:
     InputHandler() = default;
 
-    InputHandler(const HandlerPtr& handler);
+    InputHandler(const HandlerPtr handler);
 
     virtual ~InputHandler() = default;
 
-    virtual void Handle(const HandleData& data) const noexcept = 0;
+    virtual void Handle(const HandleData& data) noexcept = 0;
 
-    void SetNextHandler(const HandlerPtr& handler) noexcept;
+    void SetNextHandler(const HandlerPtr handler) noexcept;
 
 protected:
+    void CallNextHandler(const HandleData& data) noexcept;
+
     virtual bool CanHandle(const HandleData& data) const noexcept = 0;
 
 protected:

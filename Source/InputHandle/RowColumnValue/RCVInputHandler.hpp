@@ -2,14 +2,14 @@
 
 #include "InputHandle/InputHandler.hpp"
 
-class ExitInputHandler : public InputHandler
+class RCVInputHandler : public InputHandler
 {
 public:
-    ExitInputHandler() = default;
+    RCVInputHandler() = default;
 
-    ExitInputHandler(const HandlerPtr handler);
+    RCVInputHandler(const HandlerPtr handler);
 
-    ~ExitInputHandler() = default;
+    ~RCVInputHandler() = default;
 
     void Handle(const HandleData& data) noexcept override;
 

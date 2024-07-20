@@ -2,15 +2,19 @@
 
 #include "Application/Application.hpp"
 
-ExitInputHandler::ExitInputHandler(const HandlerPtr& handler)
+ExitInputHandler::ExitInputHandler(const HandlerPtr handler)
     : InputHandler{ handler }
 {}
 
-void ExitInputHandler::Handle(const HandleData& data) const noexcept
+void ExitInputHandler::Handle(const HandleData& data) noexcept
 {
     if (CanHandle(data))
     {
         Application::GetApp().SetShouldContinue(false);
+    }
+    else 
+    {
+        CallNextHandler(data);
     }
 }
 
