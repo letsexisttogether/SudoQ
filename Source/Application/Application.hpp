@@ -14,6 +14,7 @@ public:
     void DoTheHardWork() noexcept;
 
     void SetScene(const ScenePtr scene) noexcept;
+    Scene* const GetScene() noexcept;
 
     void SetShouldContinue(const bool shouldContinue) noexcept;
 

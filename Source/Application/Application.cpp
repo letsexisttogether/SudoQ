@@ -1,5 +1,7 @@
 #include "Application.hpp"
 
+#include <iostream>
+
 Application& Application::GetApp() noexcept
 {
     static Application app{};
@@ -24,6 +26,11 @@ void Application::DoTheHardWork() noexcept
 void Application::SetScene(const ScenePtr scene) noexcept
 {
     m_Scene = scene;
+}
+
+Scene* const Application::GetScene() noexcept
+{
+    return m_Scene.get();
 }
 
 void Application::SetShouldContinue(const bool shouldContinue) noexcept
