@@ -16,6 +16,9 @@ void BoardCmdPrinter::PrintBoard(const Board& board) const noexcept
     {
         for (Board::RCIndex j = 0; j < Board::GridMaxIndex; ++j)
         {
+            std::cout << static_cast<std::uint16_t>(grid[i][j]) << ' ';
+
+            /*
             if (m_CellsVisibility.GetCellValue(i, j))
             {
                 std::cout << static_cast<std::uint16_t>(grid[i][j]) << ' ';
@@ -24,6 +27,7 @@ void BoardCmdPrinter::PrintBoard(const Board& board) const noexcept
             {
                 std::cout << "  ";
             }
+            */
         }
 
         std::cout << '\n';
