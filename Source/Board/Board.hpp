@@ -1,10 +1,12 @@
 #pragma once
 
+#include <cstdint>
 #include <vector>
+
 class Board
 {
 public:
-    using CellValue = char;
+    using CellValue = std::uint16_t;
     using RowColumn = std::vector<CellValue>;
     using Grid = std::vector<RowColumn>;
 
