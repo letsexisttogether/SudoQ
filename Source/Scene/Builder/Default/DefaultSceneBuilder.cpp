@@ -11,6 +11,7 @@ SceneBuilder::SBRef DefaultSceneBuilder::BuildBoardPrinter() noexcept
 
     BoardPrinter* printer = new BoardCmdPrinter
     {
+        true, '.',
         {{
             { true, false, false, false, true, false, false, false, true },
             { false, true, false, true, false, true, false, true, false },

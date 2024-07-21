@@ -2,6 +2,7 @@
 
 #include <memory>
 
+#include "Board/BoardCell/BoardCell.hpp"
 #include "InputHandle/InputHandler.hpp"
 #include "Print/BoardPrinter.hpp"
 
@@ -26,16 +27,25 @@ public:
     void SetInputHandler(InputHandler* inputHandler) noexcept;
     InputHandler* const GetInputHandler() noexcept;
 
+    void SetInputValue(const BoardCell& inputValue) noexcept;
+
     Scene& operator = (const Scene&) = delete;
     Scene& operator = (Scene&&) = default;
+
+private:
+    bool IsGuessed() const noexcept;
+    void ChangeVisibility() noexcept;
+
+    bool IsWinCondition() const noexcept;
 
 private:
     std::unique_ptr<BoardPrinter> m_Printer{};  
     Board m_Board{};
 
+    // Input taker
     std::unique_ptr<InputHandler> m_InputHandler{};
 
-    // Input
-    // InputParser
-    // 
+    BoardCell m_InputValue{};
+
+    // Win handler
 };
