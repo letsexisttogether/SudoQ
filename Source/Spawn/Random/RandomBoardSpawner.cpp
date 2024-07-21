@@ -1,4 +1,5 @@
 #include "RandomBoardSpawner.hpp"
+#include "Board/BoardCell/BoardCell.hpp"
 
 Board RandomBoardSpawner::SpawnBoard() const noexcept
 {
@@ -14,7 +15,7 @@ Board RandomBoardSpawner::SpawnBoard() const noexcept
     return board; 
 }
 
-bool RandomBoardSpawner::FillBoard(Board& board, RCByteContainer& rowValues, 
+bool RandomBoardSpawner::FillBoard(Board& board, RCByteContainer& rowValues,
     RCByteContainer& columnValues, RCByteMatrix& tripleValues,
     const Board::RCIndex i, const Board::RCIndex j) const noexcept
 {
@@ -28,7 +29,8 @@ bool RandomBoardSpawner::FillBoard(Board& board, RCByteContainer& rowValues,
             tripleValues, i + 1, 0);
     }
 
-    for (Board::CellValue value = 1; value <= 9; ++value)
+    for (Board::CellValue value = BoardCell::MinValue; 
+        value <= BoardCell::MaxValue; ++value)
     {
         ByteValue byteValue = m_Converter.GetByteValue(value);
 
