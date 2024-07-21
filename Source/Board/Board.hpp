@@ -37,8 +37,8 @@ private:
         const noexcept;
 
 public:
-    static const RCIndex GridMaxIndex;
-    static const RCIndex TripleMaxIndex;
+    static constexpr RCIndex GridMaxIndex{ 9 };
+    static constexpr RCIndex TripleMaxIndex{ 3 };
 
 private:
     Grid m_Grid{ GridMaxIndex, RowColumn(GridMaxIndex, CellValue{}) };

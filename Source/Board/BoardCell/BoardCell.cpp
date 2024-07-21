@@ -12,5 +12,3 @@ std::istream& operator>>(std::istream& stream, BoardCell& cell)
     return stream;
 }
 
-const Board::CellValue BoardCell::MinValue{ 1 };
-const Board::CellValue BoardCell::MaxValue{ 9 };

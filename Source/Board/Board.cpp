@@ -43,6 +43,3 @@ const Board::Grid& Board::GetRawGrid() const noexcept
     return m_Grid;
 }
 
-
-const Board::RCIndex Board::GridMaxIndex = 9;
-const Board::RCIndex Board::TripleMaxIndex = 3;
