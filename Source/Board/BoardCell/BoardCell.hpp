@@ -11,6 +11,11 @@ public:
 
     friend std::istream& operator >> (std::istream& stream, BoardCell& cell);
 
+public:
+    static const Board::CellValue MaxValue;
+    static const Board::CellValue MinValue;
+
+public:
     Board::RCIndex Column{};
     Board::CellValue Value{};
     Board::RCIndex Row{};
