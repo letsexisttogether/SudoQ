@@ -1,4 +1,8 @@
 #include "RandomBoardSpawner.hpp"
+
+#include <algorithm>
+#include <random>
+
 #include "Board/BoardCell/BoardCell.hpp"
 
 Board RandomBoardSpawner::SpawnBoard() const noexcept
@@ -9,6 +13,10 @@ Board RandomBoardSpawner::SpawnBoard() const noexcept
     RCByteContainer columnValues(Board::GridMaxIndex, ByteValue{});
     RCByteMatrix tripleValues{ Board::TripleMaxIndex,
         RCByteContainer(Board::TripleMaxIndex, ByteValue{}) };
+
+    std::mt19937 rng{ std::random_device{}() };
+    std::shuffle(m_PossibleValues.begin(), m_PossibleValues.end(),
+        rng);
 
     FillBoard(board, rowValues, columnValues, tripleValues);
 
@@ -29,8 +37,7 @@ bool RandomBoardSpawner::FillBoard(Board& board, RCByteContainer& rowValues,
             tripleValues, i + 1, 0);
     }
 
-    for (Board::CellValue value = BoardCell::MinValue; 
-        value <= BoardCell::MaxValue; ++value)
+    for (const Board::CellValue value : m_PossibleValues)
     {
         ByteValue byteValue = m_Converter.GetByteValue(value);
 

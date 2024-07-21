@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Board/BoardCell/BoardCell.hpp"
 #include "Convert/CellValueConverter.hpp"
 #include "Spawn/BoardSpawner.hpp"
 
@@ -36,4 +37,7 @@ private:
 
 private:
     CellValueConverter m_Converter{};
+
+    mutable BoardCell::RangeValues m_PossibleValues
+        { BoardCell::PossibleValues };
 };
