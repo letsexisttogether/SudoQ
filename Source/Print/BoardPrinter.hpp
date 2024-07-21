@@ -18,9 +18,12 @@ public:
 
     virtual void PrintBoard(const Board& board) const noexcept = 0;
 
-    void SetVisibility(Board::RCIndex row, Board::RCIndex column,
+    void SetCellVisibility(Board::RCIndex row, Board::RCIndex column,
         const bool isVisible) noexcept;
+    bool GetCellVisibility(Board::RCIndex row, Board::RCIndex column)
+        const noexcept;
 
+    const VisibilityGrid::Grid& GetRawGrid() const noexcept;
 
 protected:
     VisibilityGrid m_CellsVisibility

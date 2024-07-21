@@ -6,6 +6,12 @@ BoardCmdPrinter::BoardCmdPrinter(VisibilityGrid&& grid)
     : BoardPrinter{ std::move(grid) }
 {}
 
+BoardCmdPrinter::BoardCmdPrinter(const bool isFrame, 
+    const char emptyCellSign, VisibilityGrid&& grid)
+    : m_IsFrame{ isFrame }, m_EmptyCellSign{ emptyCellSign },
+    BoardPrinter{ std::move(grid) }
+{}
+
 void BoardCmdPrinter::PrintBoard(const Board& board) const noexcept
 {
     system("cls");
@@ -16,7 +22,7 @@ void BoardCmdPrinter::PrintBoard(const Board& board) const noexcept
 
     for (Board::RCIndex i = 0; i < Board::GridMaxIndex; ++i)
     {
-        if (!(i % 3))
+        if (m_IsFrame && !(i % 3))
         {
             std::cout << "+-------+-------+-------+\n";
         }
@@ -24,7 +30,7 @@ void BoardCmdPrinter::PrintBoard(const Board& board) const noexcept
         for (Board::RCIndex j = 0; j < Board::GridMaxIndex; ++j)
         {
 
-            if (!(j % 3))
+            if (m_IsFrame && !(j % 3))
             {
                 std::cout << "| ";
             }
@@ -35,11 +41,11 @@ void BoardCmdPrinter::PrintBoard(const Board& board) const noexcept
             }
             else 
             {
-                std::cout << "  ";
+                std::cout << m_EmptyCellSign << ' '; 
             }
         }
 
-        std::cout << "|\n";
+        std::cout << ((m_IsFrame) ? ('|') : (' ')) << '\n';
     }
 
     std::cout << "+-------+-------+-------+" << std::endl;
