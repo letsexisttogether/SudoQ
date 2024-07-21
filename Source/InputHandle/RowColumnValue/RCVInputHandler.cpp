@@ -25,6 +25,12 @@ void RCVInputHandler::Handle(const HandleData& data) noexcept
     std::istringstream iss{ data };
     iss >> cell;
 
+    if (cell.Value < BoardCell::MinValue
+        || cell.Value > BoardCell::MaxValue)
+    {
+        return;
+    }
+
     --cell.Row;
     --cell.Column;
 
