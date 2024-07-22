@@ -1,7 +1,5 @@
 #include "Application.hpp"
 
-#include <iostream>
-
 Application& Application::GetApp() noexcept
 {
     static Application app{};

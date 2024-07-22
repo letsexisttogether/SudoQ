@@ -10,7 +10,8 @@ std::int32_t main(std::int32_t argc, char** argv)
 
     std::unique_ptr<SceneBuilder> sceneBuilder{ new DefaultSceneBuilder{} };
 
-    sceneBuilder->BuildBoardPrinter().BuildBoard().BuildInputHandler();
+    sceneBuilder->BuildBoardPrinter().BuildBoard()
+        .BuildInputTaker().BuildInputHandler();
 
     Application& app = Application::GetApp();
     app.SetScene(sceneBuilder->GetResult());
