@@ -11,7 +11,7 @@ std::int32_t main(std::int32_t argc, char** argv)
     std::unique_ptr<SceneBuilder> sceneBuilder{ new DefaultSceneBuilder{} };
 
     sceneBuilder->BuildBoardPrinter().BuildBoard()
-        .BuildInputTaker().BuildInputHandler();
+        .BuildInputTaker().BuildInputHandler().BuildVictoryHandle();
 
     Application& app = Application::GetApp();
     app.SetScene(sceneBuilder->GetResult());

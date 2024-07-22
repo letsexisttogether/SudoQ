@@ -9,6 +9,8 @@
 #include "InputHandle/RowColumnValue/RCVInputHandler.hpp"
 #include "InputTaker/Cmd/CmdInputTaker.hpp"
 #include "Print/Cmd/BoardCmdPrinter.hpp"
+#include "Scene/Builder/SceneBuilder.hpp"
+#include "VictoryHandle/Cmd/CmdVictoryHandle.hpp"
 
 SceneBuilder::SBRef DefaultSceneBuilder::BuildBoardPrinter() noexcept
 {
@@ -16,8 +18,8 @@ SceneBuilder::SBRef DefaultSceneBuilder::BuildBoardPrinter() noexcept
 
     std::unique_ptr<DifficultySpawner> diffSpawner
     { 
-        // new RandDiffSpawner{ 40 }
-        new GuaranteeDiffSpawner{ 3, GuaranteeArea::Triple }
+        // new RandDiffSpawner{ 30 }
+        new GuaranteeDiffSpawner{ 9, GuaranteeArea::Triple }
     };
 
     BoardPrinter* printer = new BoardCmdPrinter
@@ -62,6 +64,22 @@ SceneBuilder::SBRef DefaultSceneBuilder::BuildInputHandler() noexcept
     handler->SetNextHandler(std::make_shared<RCVInputHandler>());
 
     m_Scene->SetInputHandler(handler);
+
+    return *this;
+}
+
+
+SceneBuilder::SBRef DefaultSceneBuilder::BuildVictoryHandle() noexcept
+{
+    CreateIfOut();
+
+    VictoryHandle* handler = new CmdVictoryHandle
+    {
+        "Congratulations, You have solved this puzzle\n" \
+        "You have won SudoQ\nThis time it's officially nepemora\n"
+    };
+
+    m_Scene->SetVictoryHandle(handler);
 
     return *this;
 }

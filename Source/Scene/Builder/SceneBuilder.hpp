@@ -17,6 +17,7 @@ public:
     virtual SBRef BuildBoard() noexcept = 0;
     virtual SBRef BuildInputTaker() noexcept = 0;
     virtual SBRef BuildInputHandler() noexcept = 0;
+    virtual SBRef BuildVictoryHandle() noexcept = 0;
 
     ScenePtr GetResult() noexcept;
 

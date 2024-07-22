@@ -6,6 +6,7 @@
 #include "InputHandle/InputHandler.hpp"
 #include "InputTaker/InputTaker.hpp"
 #include "Print/BoardPrinter.hpp"
+#include "VictoryHandle/VictoryHandle.hpp"
 
 class Scene
 {
@@ -33,6 +34,8 @@ public:
 
     void SetInputValue(const BoardCell& inputValue) noexcept;
 
+    void SetVictoryHandle(VictoryHandle* victoryHandle) noexcept;
+
     Scene& operator = (const Scene&) = delete;
     Scene& operator = (Scene&&) = default;
 
@@ -46,11 +49,10 @@ private:
     std::unique_ptr<BoardPrinter> m_Printer{};  
     Board m_Board{};
 
-    // Input taker
     std::unique_ptr<InputTaker> m_InputTaker{};
     std::unique_ptr<InputHandler> m_InputHandler{};
 
     BoardCell m_InputValue{};
 
-    // Win handler
+    std::unique_ptr<VictoryHandle> m_VictoryHandle{};
 };

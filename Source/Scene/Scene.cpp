@@ -19,9 +19,7 @@ void Scene::UpdateLogic() noexcept
 
     if (IsWinCondition())
     {
-        std::cout << "nepemora" << std::endl;
-
-        Application::GetApp().SetShouldContinue(false);
+        m_VictoryHandle->HandleVictory();
     }
 }
 
@@ -75,6 +73,11 @@ void Scene::SetInputValue(const BoardCell& inputValue) noexcept
     m_InputValue = inputValue;
 }
 
+void Scene::SetVictoryHandle(VictoryHandle* victoryHandle) noexcept
+{
+    m_VictoryHandle.reset(victoryHandle);
+}
+
 bool Scene::IsGuessed() const noexcept
 {
     return (m_Board.GetCellValue(m_InputValue.Row, m_InputValue.Column)
@@ -102,3 +105,4 @@ bool Scene::IsWinCondition() const noexcept
 
     return true;
 }
+

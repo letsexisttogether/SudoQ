@@ -16,7 +16,6 @@ RandDiffSpawner::VisibilityGrid RandDiffSpawner::SpawnDifficulty()
         Board::GridMaxIndex * Board::GridMaxIndex;
     const IndicesArray indices{ SpawnRandomIndices(indicesSize) };
 
-
     for (Board::RCIndex i = 0; i < m_Count; ++i)
     {
         const Board::RCIndex index = indices[i];
