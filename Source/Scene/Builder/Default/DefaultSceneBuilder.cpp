@@ -2,6 +2,7 @@
 
 #include <memory>
 
+#include "Difficulty/Guarantee/GuaranteeDiffSpawner.hpp"
 #include "Difficulty/Random/RandDiffSpawner.hpp"
 #include "InputHandle/Exit/ExitInputHandler.hpp"
 #include "InputHandle/InputHandler.hpp"
@@ -15,7 +16,8 @@ SceneBuilder::SBRef DefaultSceneBuilder::BuildBoardPrinter() noexcept
 
     std::unique_ptr<DifficultySpawner> diffSpawner
     { 
-        new RandDiffSpawner{ 30 }
+        // new RandDiffSpawner{ 40 }
+        new GuaranteeDiffSpawner{ 3, GuaranteeArea::Triple }
     };
 
     BoardPrinter* printer = new BoardCmdPrinter
