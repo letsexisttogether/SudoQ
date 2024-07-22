@@ -6,6 +6,7 @@ class RandDiffSpawner : public DifficultySpawner
 {
 public:
     using VisibleCellsCount = Board::RCIndex;
+    using IndicesArray = std::vector<VisibleCellsCount>;
     
 public:
     RandDiffSpawner() = default;
@@ -14,13 +15,17 @@ public:
 
     RandDiffSpawner(const VisibleCellsCount count); 
 
-    ~RandDiffSpawner() = default;
+    virtual ~RandDiffSpawner() = default;
 
     VisibilityGrid SpawnDifficulty() noexcept override; 
 
     RandDiffSpawner& operator = (const RandDiffSpawner&) = default;
     RandDiffSpawner& operator = (RandDiffSpawner&&) = default;
 
-private:
+protected:
+    IndicesArray SpawnRandomIndices(const VisibleCellsCount size)
+        const noexcept;
+
+protected:
     VisibleCellsCount m_Count{};    
 };
