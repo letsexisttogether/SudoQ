@@ -1,30 +1,26 @@
 #include "DefaultSceneBuilder.hpp"
+
+#include <memory>
+
+#include "Difficulty/Random/RandDiffSpawner.hpp"
 #include "InputHandle/Exit/ExitInputHandler.hpp"
 #include "InputHandle/InputHandler.hpp"
 #include "InputHandle/RowColumnValue/RCVInputHandler.hpp"
 #include "InputTaker/Cmd/CmdInputTaker.hpp"
 #include "Print/Cmd/BoardCmdPrinter.hpp"
-#include "Scene/Builder/SceneBuilder.hpp"
-#include <memory>
 
 SceneBuilder::SBRef DefaultSceneBuilder::BuildBoardPrinter() noexcept
 {
     CreateIfOut();
 
+    std::unique_ptr<DifficultySpawner> diffSpawner
+    { 
+        new RandDiffSpawner{ 30 }
+    };
+
     BoardPrinter* printer = new BoardCmdPrinter
     {
-        true, '.',
-        {{
-            { true, false, false, false, true, false, false, false, true },
-            { false, true, false, true, false, true, false, true, false },
-            { false, false, true, false, false, false, true, false, false },
-            { true, false, false, true, false, true, false, false, true },
-            { false, true, false, false, true, false, false, true, false },
-            { true, false, true, false, true, false, true, false, true },
-            { false, true, false, false, false, false, false, true, false },
-            { true, false, true, false, false, false, true, false, true },
-            { false, true, false, true, false, true, false, true, false }
-        }}
+        true, '.', diffSpawner->SpawnDifficulty()
     };
 
     m_Scene->SetPrinter(printer);
