@@ -2,7 +2,9 @@
 #include "InputHandle/Exit/ExitInputHandler.hpp"
 #include "InputHandle/InputHandler.hpp"
 #include "InputHandle/RowColumnValue/RCVInputHandler.hpp"
+#include "InputTaker/Cmd/CmdInputTaker.hpp"
 #include "Print/Cmd/BoardCmdPrinter.hpp"
+#include "Scene/Builder/SceneBuilder.hpp"
 #include <memory>
 
 SceneBuilder::SBRef DefaultSceneBuilder::BuildBoardPrinter() noexcept
@@ -39,6 +41,20 @@ SceneBuilder::SBRef DefaultSceneBuilder::BuildBoard() noexcept
     return *this;
 }
 
+SceneBuilder::SBRef DefaultSceneBuilder::BuildInputTaker() noexcept
+{   
+    CreateIfOut();
+
+    InputTaker* taker = new CmdInputTaker
+    {
+        "You can type row, column, value [1; 9] " \
+            "like 1 2 2 or exit.\nEnter command: "
+    };
+
+    m_Scene->SetInputTaker(taker);
+
+    return *this;
+}
 
 SceneBuilder::SBRef DefaultSceneBuilder::BuildInputHandler() noexcept
 {

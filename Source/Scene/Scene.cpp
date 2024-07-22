@@ -1,20 +1,12 @@
 #include "Scene.hpp"
 
 #include <iostream>
-#include <string>
 
 #include "Application/Application.hpp"
 
 void Scene::UpdateLogic() noexcept
 {
-    InputHandler::HandleData data{};
-    
-    std::cout << "You can type row, column, value [1; 9] " <<
-        "like 1 2 2 or exit.\n" << "Enter command: ";
-
-    std::getline(std::cin, data);
-
-    std::cout << "Your command is " << data << std::endl;
+    InputHandler::HandleData data{ m_InputTaker->TakeData() };
 
     m_InputHandler->Handle(data);
 
@@ -56,6 +48,16 @@ void Scene::SetBoard(Board&& board) noexcept
 const Board& Scene::GetBoard() const noexcept
 {
     return m_Board;
+}
+
+void Scene::SetInputTaker(InputTaker* inputTaker) noexcept
+{
+    m_InputTaker.reset(inputTaker);
+}
+
+InputTaker* const Scene::GetInputTaker() noexcept
+{
+    return m_InputTaker.get();
 }
 
 void Scene::SetInputHandler(InputHandler* inputHandler) noexcept

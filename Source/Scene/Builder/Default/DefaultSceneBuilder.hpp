@@ -16,6 +16,7 @@ public:
 
     SBRef BuildBoardPrinter() noexcept override;
     SBRef BuildBoard() noexcept override;
+    SBRef BuildInputTaker() noexcept override;
     SBRef BuildInputHandler() noexcept override;
 
 private:

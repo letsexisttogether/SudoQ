@@ -4,6 +4,7 @@
 
 #include "Board/BoardCell/BoardCell.hpp"
 #include "InputHandle/InputHandler.hpp"
+#include "InputTaker/InputTaker.hpp"
 #include "Print/BoardPrinter.hpp"
 
 class Scene
@@ -24,6 +25,9 @@ public:
     void SetBoard(Board&& board) noexcept;
     const Board& GetBoard() const noexcept;
 
+    void SetInputTaker(InputTaker* inputTaker) noexcept;
+    InputTaker* const GetInputTaker() noexcept;
+
     void SetInputHandler(InputHandler* inputHandler) noexcept;
     InputHandler* const GetInputHandler() noexcept;
 
@@ -43,6 +47,7 @@ private:
     Board m_Board{};
 
     // Input taker
+    std::unique_ptr<InputTaker> m_InputTaker{};
     std::unique_ptr<InputHandler> m_InputHandler{};
 
     BoardCell m_InputValue{};
