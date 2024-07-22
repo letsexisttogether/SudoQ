@@ -5,6 +5,9 @@
 class RandDiffSpawner : public DifficultySpawner
 {
 public:
+    using VisibleCellsCount = Board::RCIndex;
+    
+public:
     RandDiffSpawner() = default;
     RandDiffSpawner(const RandDiffSpawner&) = default;
     RandDiffSpawner(RandDiffSpawner&&) = default;
@@ -14,4 +17,10 @@ public:
     ~RandDiffSpawner() = default;
 
     VisibilityGrid SpawnDifficulty() noexcept override; 
+
+    RandDiffSpawner& operator = (const RandDiffSpawner&) = default;
+    RandDiffSpawner& operator = (RandDiffSpawner&&) = default;
+
+private:
+    VisibleCellsCount m_Count{};    
 };

@@ -1,9 +1,5 @@
 #include "DefaultDiffSpawner.hpp"
 
-DefaultDiffSpawner::DefaultDiffSpawner(const VisibleCellsCount count)
-    : DifficultySpawner{ count }
-{}
-
 DefaultDiffSpawner::VisibilityGrid DefaultDiffSpawner::SpawnDifficulty() 
     noexcept
 {
