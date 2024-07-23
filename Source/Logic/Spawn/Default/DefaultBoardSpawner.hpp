@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Spawn/BoardSpawner.hpp"
+#include "Logic/Spawn/BoardSpawner.hpp"
 
 class DefaultBoardSpawner : public BoardSpawner
 {

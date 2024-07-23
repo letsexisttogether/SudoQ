@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <random>
 
-#include "Board/BoardCell/BoardCell.hpp"
+#include "Logic/Board/BoardCell/BoardCell.hpp"
 
 Board RandomBoardSpawner::SpawnBoard() const noexcept
 {

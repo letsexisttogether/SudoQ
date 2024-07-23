@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Board/BoardCell/BoardCell.hpp"
-#include "Convert/CellValueConverter.hpp"
-#include "Spawn/BoardSpawner.hpp"
+#include "Logic/Board/BoardCell/BoardCell.hpp"
+#include "Utility/Convert/CellValueConverter.hpp"
+#include "Logic/Spawn/BoardSpawner.hpp"
 
 class RandomBoardSpawner : public BoardSpawner
 {
