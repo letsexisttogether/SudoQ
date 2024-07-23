@@ -2,7 +2,7 @@
 #include <memory>
 
 #include "Application/Application.hpp"
-#include "Scene/Builder/Default/DefaultSceneBuilder.hpp"
+#include "Application/Scene/Builder/Default/DefaultSceneBuilder.hpp"
 
 std::int32_t main(std::int32_t argc, char** argv)
 {
