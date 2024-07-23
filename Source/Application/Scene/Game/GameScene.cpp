@@ -1,6 +1,6 @@
-#include "Scene.hpp"
+#include "GameScene.hpp"
 
-void Scene::UpdateLogic() noexcept
+void GameScene::UpdateLogic() noexcept
 {
     InputHandler::HandleData data{ m_InputTaker->TakeData() };
 
@@ -19,74 +19,74 @@ void Scene::UpdateLogic() noexcept
     }
 }
 
-void Scene::UpdateGraphic() noexcept
+void GameScene::UpdateGraphic() noexcept
 {
     m_Printer->PrintBoard(m_Board);
 }
 
-void Scene::SetPrinter(BoardPrinter* printer) noexcept
+void GameScene::SetPrinter(BoardPrinter* printer) noexcept
 {
     m_Printer.reset(printer);
 }
 
-BoardPrinter* const Scene::GetPrinter() noexcept
+BoardPrinter* const GameScene::GetPrinter() noexcept
 {
     return m_Printer.get();
 }
 
-void Scene::SetBoard(Board&& board) noexcept
+void GameScene::SetBoard(Board&& board) noexcept
 {
     m_Board = std::move(board);
 }
 
-const Board& Scene::GetBoard() const noexcept
+const Board& GameScene::GetBoard() const noexcept
 {
     return m_Board;
 }
 
-void Scene::SetInputTaker(InputTaker* inputTaker) noexcept
+void GameScene::SetInputTaker(InputTaker* inputTaker) noexcept
 {
     m_InputTaker.reset(inputTaker);
 }
 
-InputTaker* const Scene::GetInputTaker() noexcept
+InputTaker* const GameScene::GetInputTaker() noexcept
 {
     return m_InputTaker.get();
 }
 
-void Scene::SetInputHandler(InputHandler* inputHandler) noexcept
+void GameScene::SetInputHandler(InputHandler* inputHandler) noexcept
 {
     m_InputHandler.reset(inputHandler);
 }
 
-InputHandler* const Scene::GetInputHandler() noexcept
+InputHandler* const GameScene::GetInputHandler() noexcept
 {
     return m_InputHandler.get();
 }
 
-void Scene::SetInputValue(const BoardCell& inputValue) noexcept
+void GameScene::SetInputValue(const BoardCell& inputValue) noexcept
 {
     m_InputValue = inputValue;
 }
 
-void Scene::SetVictoryHandle(VictoryHandler* victoryHandle) noexcept
+void GameScene::SetVictoryHandle(VictoryHandler* victoryHandle) noexcept
 {
     m_VictoryHandle.reset(victoryHandle);
 }
 
-bool Scene::IsGuessed() const noexcept
+bool GameScene::IsGuessed() const noexcept
 {
     return (m_Board.GetCellValue(m_InputValue.Row, m_InputValue.Column)
         == m_InputValue.Value);
 }
 
-void Scene::ChangeVisibility() noexcept
+void GameScene::ChangeVisibility() noexcept
 {
     m_Printer->SetCellVisibility(m_InputValue.Row, m_InputValue.Column,
         true);
 }
 
-bool Scene::IsWinCondition() const noexcept
+bool GameScene::IsWinCondition() const noexcept
 {
     for (const auto& row : m_Printer->GetRawGrid())
     {
