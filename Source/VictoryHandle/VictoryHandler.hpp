@@ -4,17 +4,17 @@
 
 // I'll leave it in this state. 
 // TODO: clean first order 
-class VictoryHandle
+class VictoryHandler
 {
 public:
     using Message = std::string;
 
 public:
-    VictoryHandle() = default;
+    VictoryHandler() = default;
 
-    VictoryHandle(Message&& victoryMessage);
+    VictoryHandler(Message&& victoryMessage);
 
-    virtual ~VictoryHandle() = default;
+    virtual ~VictoryHandler() = default;
 
     virtual void HandleVictory() noexcept = 0;
 

@@ -1,14 +1,14 @@
-#include "CmdVictoryHandle.hpp"
+#include "CmdVictoryHandler.hpp"
 
 #include "Application/Application.hpp"
 
 #include <iostream>
 
-CmdVictoryHandle::CmdVictoryHandle(Message&& victoryMessage)
-    : VictoryHandle{ std::move(victoryMessage) }
+CmdVictoryHandler::CmdVictoryHandler(Message&& victoryMessage)
+    : VictoryHandler{ std::move(victoryMessage) }
 {}
 
-void CmdVictoryHandle::HandleVictory() noexcept
+void CmdVictoryHandler::HandleVictory() noexcept
 {
     Scene* const scene = Application::GetApp().GetScene();
 

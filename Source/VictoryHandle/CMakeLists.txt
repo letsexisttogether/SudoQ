@@ -1,4 +1,4 @@
 target_sources(${PROJECT_NAME}
-    PRIVATE VictoryHandle.cpp
-    PRIVATE Cmd/CmdVictoryHandle.cpp
+    PRIVATE VictoryHandler.cpp
+    PRIVATE Cmd/CmdVictoryHandler.cpp
 )
