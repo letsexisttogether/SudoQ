@@ -1,4 +1,4 @@
-#include "DefaultSceneBuilder.hpp"
+#include "GameSceneBuilder.hpp"
 
 #include <memory>
 
@@ -10,7 +10,29 @@
 #include "Application/Scene/Builder/SceneBuilder.hpp"
 #include "VictoryHandle/Cmd/CmdVictoryHandler.hpp"
 
-SceneBuilder::SBRef DefaultSceneBuilder::BuildBoardPrinter() noexcept
+GameSceneBuilder::ScenePtr GameSceneBuilder::GetResult() noexcept
+{
+    ScenePtr temp{ m_Scene };
+
+    Reset();
+
+    return temp;
+}
+
+void GameSceneBuilder::CreateIfOut() noexcept
+{
+    if (!m_Scene)
+    {
+        m_Scene.reset(new GameScene{});
+    }
+}
+
+void GameSceneBuilder::Reset() noexcept
+{
+    m_Scene.reset();
+}
+
+GameSceneBuilder::SBRef GameSceneBuilder::BuildBoardPrinter() noexcept
 {
     CreateIfOut();
 
@@ -29,7 +51,7 @@ SceneBuilder::SBRef DefaultSceneBuilder::BuildBoardPrinter() noexcept
     return *this;
 }
 
-SceneBuilder::SBRef DefaultSceneBuilder::BuildBoard() noexcept
+GameSceneBuilder::SBRef GameSceneBuilder::BuildBoard() noexcept
 {
     CreateIfOut();
 
@@ -38,7 +60,7 @@ SceneBuilder::SBRef DefaultSceneBuilder::BuildBoard() noexcept
     return *this;
 }
 
-SceneBuilder::SBRef DefaultSceneBuilder::BuildInputTaker() noexcept
+GameSceneBuilder::SBRef GameSceneBuilder::BuildInputTaker() noexcept
 {   
     CreateIfOut();
 
@@ -53,7 +75,7 @@ SceneBuilder::SBRef DefaultSceneBuilder::BuildInputTaker() noexcept
     return *this;
 }
 
-SceneBuilder::SBRef DefaultSceneBuilder::BuildInputHandler() noexcept
+GameSceneBuilder::SBRef GameSceneBuilder::BuildInputHandler() noexcept
 {
     CreateIfOut();
 
@@ -65,7 +87,7 @@ SceneBuilder::SBRef DefaultSceneBuilder::BuildInputHandler() noexcept
     return *this;
 }
 
-SceneBuilder::SBRef DefaultSceneBuilder::BuildVictoryHandle() noexcept
+GameSceneBuilder::SBRef GameSceneBuilder::BuildVictoryHandle() noexcept
 {
     CreateIfOut();
 

@@ -1,6 +1,7 @@
 #include "CmdVictoryHandler.hpp"
 
 #include "Application/Application.hpp"
+#include "Application/Scene/Game/GameScene.hpp"
 
 #include <iostream>
 
@@ -10,7 +11,8 @@ CmdVictoryHandler::CmdVictoryHandler(Message&& victoryMessage)
 
 void CmdVictoryHandler::HandleVictory() noexcept
 {
-    Scene* const scene = Application::GetApp().GetScene();
+    GameScene* const scene = static_cast<GameScene*>
+        (Application::GetApp().GetScene());
 
     scene->GetPrinter()->PrintBoard(scene->GetBoard()); 
 

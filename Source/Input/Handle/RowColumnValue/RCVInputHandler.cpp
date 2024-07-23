@@ -4,6 +4,7 @@
 #include <sstream>
 
 #include "Application/Application.hpp"
+#include "Application/Scene/Game/GameScene.hpp"
 #include "Logic/Board/BoardCell/BoardCell.hpp"
 
 RCVInputHandler::RCVInputHandler(const HandlerPtr handler)
@@ -34,7 +35,10 @@ void RCVInputHandler::Handle(const HandleData& data) noexcept
     --cell.Row;
     --cell.Column;
 
-    Application::GetApp().GetScene()->SetInputValue(cell);
+    GameScene* const scene = static_cast<GameScene*>
+        (Application::GetApp().GetScene());
+
+    scene->SetInputValue(cell);
 }
 
 bool RCVInputHandler::CanHandle(const HandleData& data) const noexcept

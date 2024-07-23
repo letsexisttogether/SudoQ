@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include "Scene/Scene.hpp"
 
 class Application
