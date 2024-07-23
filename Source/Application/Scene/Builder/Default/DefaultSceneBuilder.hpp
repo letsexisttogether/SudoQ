@@ -2,8 +2,8 @@
 
 #include <memory>
 
-#include "Scene/Builder/SceneBuilder.hpp"
-#include "Spawn/Random/RandomBoardSpawner.hpp"
+#include "Application/Scene/Builder/SceneBuilder.hpp"
+#include "Logic/Spawn/Random/RandomBoardSpawner.hpp"
 
 class DefaultSceneBuilder : public SceneBuilder
 {

@@ -2,11 +2,11 @@
 
 #include <memory>
 
-#include "Board/BoardCell/BoardCell.hpp"
-#include "InputHandle/InputHandler.hpp"
-#include "InputTaker/InputTaker.hpp"
 #include "Print/BoardPrinter.hpp"
-#include "VictoryHandle/VictoryHandle.hpp"
+#include "Logic/Board/BoardCell/BoardCell.hpp"
+#include "Input/Handle/InputHandler.hpp"
+#include "Input/Take/InputTaker.hpp"
+#include "VictoryHandle/VictoryHandler.hpp"
 
 class Scene
 {
@@ -34,7 +34,7 @@ public:
 
     void SetInputValue(const BoardCell& inputValue) noexcept;
 
-    void SetVictoryHandle(VictoryHandle* victoryHandle) noexcept;
+    void SetVictoryHandle(VictoryHandler* victoryHandle) noexcept;
 
     Scene& operator = (const Scene&) = delete;
     Scene& operator = (Scene&&) = default;
@@ -54,5 +54,5 @@ private:
 
     BoardCell m_InputValue{};
 
-    std::unique_ptr<VictoryHandle> m_VictoryHandle{};
+    std::unique_ptr<VictoryHandler> m_VictoryHandle{};
 };

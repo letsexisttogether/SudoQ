@@ -1,9 +1,5 @@
 #include "Scene.hpp"
 
-#include <iostream>
-
-#include "Application/Application.hpp"
-
 void Scene::UpdateLogic() noexcept
 {
     InputHandler::HandleData data{ m_InputTaker->TakeData() };
@@ -73,7 +69,7 @@ void Scene::SetInputValue(const BoardCell& inputValue) noexcept
     m_InputValue = inputValue;
 }
 
-void Scene::SetVictoryHandle(VictoryHandle* victoryHandle) noexcept
+void Scene::SetVictoryHandle(VictoryHandler* victoryHandle) noexcept
 {
     m_VictoryHandle.reset(victoryHandle);
 }

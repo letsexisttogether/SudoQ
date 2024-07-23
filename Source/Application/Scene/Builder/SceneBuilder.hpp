@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Scene/Scene.hpp"
+#include "Application/Scene/Scene.hpp"
 
 class SceneBuilder
 {

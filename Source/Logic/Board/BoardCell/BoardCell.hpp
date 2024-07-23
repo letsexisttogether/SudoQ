@@ -3,7 +3,7 @@
 #include <array>
 #include <istream>
 
-#include "Board/Board.hpp"
+#include "Logic/Board/Board.hpp"
 
 class BoardCell
 {

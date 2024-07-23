@@ -2,15 +2,13 @@
 
 #include <memory>
 
-#include "Difficulty/Guarantee/GuaranteeDiffSpawner.hpp"
-#include "Difficulty/Random/RandDiffSpawner.hpp"
-#include "InputHandle/Exit/ExitInputHandler.hpp"
-#include "InputHandle/InputHandler.hpp"
-#include "InputHandle/RowColumnValue/RCVInputHandler.hpp"
-#include "InputTaker/Cmd/CmdInputTaker.hpp"
+#include "Logic/Difficulty/Guarantee/GuaranteeDiffSpawner.hpp"
+#include "Input/Handle/Exit/ExitInputHandler.hpp"
+#include "Input/Handle/RowColumnValue/RCVInputHandler.hpp"
+#include "Input/Take/Cmd/CmdInputTaker.hpp"
 #include "Print/Cmd/BoardCmdPrinter.hpp"
-#include "Scene/Builder/SceneBuilder.hpp"
-#include "VictoryHandle/Cmd/CmdVictoryHandle.hpp"
+#include "Application/Scene/Builder/SceneBuilder.hpp"
+#include "VictoryHandle/Cmd/CmdVictoryHandler.hpp"
 
 SceneBuilder::SBRef DefaultSceneBuilder::BuildBoardPrinter() noexcept
 {
@@ -18,8 +16,7 @@ SceneBuilder::SBRef DefaultSceneBuilder::BuildBoardPrinter() noexcept
 
     std::unique_ptr<DifficultySpawner> diffSpawner
     { 
-        // new RandDiffSpawner{ 30 }
-        new GuaranteeDiffSpawner{ 9, GuaranteeArea::Triple }
+        new GuaranteeDiffSpawner{ 5, GuaranteeArea::Triple }
     };
 
     BoardPrinter* printer = new BoardCmdPrinter
@@ -72,7 +69,7 @@ SceneBuilder::SBRef DefaultSceneBuilder::BuildVictoryHandle() noexcept
 {
     CreateIfOut();
 
-    VictoryHandle* handler = new CmdVictoryHandle
+    VictoryHandler* handler = new CmdVictoryHandler
     {
         "Congratulations, You have solved this puzzle\n" \
         "You have won SudoQ\nThis time it's officially nepemora\n"
