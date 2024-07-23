@@ -68,7 +68,6 @@ SceneBuilder::SBRef DefaultSceneBuilder::BuildInputHandler() noexcept
     return *this;
 }
 
-
 SceneBuilder::SBRef DefaultSceneBuilder::BuildVictoryHandle() noexcept
 {
     CreateIfOut();
