@@ -1,4 +1,5 @@
 #include "CmdInputTaker.hpp"
+
 #include <iostream>
 #include <string>
 

@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "InputHandle/InputHandler.hpp"
+#include "Input/Handle/InputHandler.hpp"
 
 class InputTaker
 {

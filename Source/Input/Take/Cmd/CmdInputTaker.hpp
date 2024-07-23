@@ -1,6 +1,6 @@
 #pragma once
 
-#include "InputTaker/InputTaker.hpp"
+#include "Input/Take/InputTaker.hpp"
 
 class CmdInputTaker : public InputTaker
 {

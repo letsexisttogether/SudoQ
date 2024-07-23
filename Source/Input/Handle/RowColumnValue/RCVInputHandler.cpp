@@ -4,7 +4,7 @@
 #include <sstream>
 
 #include "Application/Application.hpp"
-#include "Board/BoardCell/BoardCell.hpp"
+#include "Logic/Board/BoardCell/BoardCell.hpp"
 
 RCVInputHandler::RCVInputHandler(const HandlerPtr handler)
     : InputHandler{ handler }

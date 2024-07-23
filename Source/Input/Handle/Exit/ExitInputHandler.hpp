@@ -1,6 +1,6 @@
 #pragma once
 
-#include "InputHandle/InputHandler.hpp"
+#include "Input/Handle/InputHandler.hpp"
 
 class ExitInputHandler : public InputHandler
 {
