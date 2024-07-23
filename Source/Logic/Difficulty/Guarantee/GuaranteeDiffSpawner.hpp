@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Difficulty/Guarantee/GuaranteeArea.hpp"
-#include "Difficulty/Random/RandDiffSpawner.hpp"
+#include "Logic/Difficulty/Random/RandDiffSpawner.hpp"
+#include "GuaranteeArea.hpp"
 
 class GuaranteeDiffSpawner : public RandDiffSpawner 
 {

@@ -1,7 +1,4 @@
 #include "GuaranteeDiffSpawner.hpp"
-#include "Difficulty/Guarantee/GuaranteeArea.hpp"
-#include <numeric>
-#include <random>
 
 GuaranteeDiffSpawner::GuaranteeDiffSpawner(const VisibleCellsCount count,
     const GuaranteeArea area)

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Difficulty/DifficultySpawner.hpp"
+#include "Logic/Difficulty/DifficultySpawner.hpp"
 
 class RandDiffSpawner : public DifficultySpawner
 {
