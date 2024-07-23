@@ -28,6 +28,9 @@ public:
 
     void Reset() noexcept override;
 
+    GameSceneBuilder& operator = (const GameSceneBuilder&) = delete;
+    GameSceneBuilder& operator = (GameSceneBuilder&&) = delete;
+
 protected:
     void CreateIfOut() noexcept override;
 

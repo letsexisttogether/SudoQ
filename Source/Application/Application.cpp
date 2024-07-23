@@ -21,9 +21,11 @@ void Application::DoTheHardWork() noexcept
     // Do the CleanUp()
 }
 
-void Application::SetScene(const ScenePtr scene) noexcept
+void Application::SetSceneDirector(SBDirector* director) noexcept
 {
-    m_Scene = scene;
+    m_SceneDirector.reset(director);
+
+    m_Scene = director->GetScene();
 }
 
 Scene* const Application::GetScene() noexcept
