@@ -3,8 +3,8 @@
 #include <cstdint>
 #include <unordered_map>
 
-#include "Board/Board.hpp"
-#include "Convert/CellValueConverter.hpp"
+#include "Logic/Board/Board.hpp"
+#include "Utility/Convert/CellValueConverter.hpp"
 
 class BoardChecker
 {
