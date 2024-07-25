@@ -29,7 +29,6 @@ RandDiffSpawner::VisibilityGrid RandDiffSpawner::SpawnDifficulty()
     return grid;
 }
 
-
 RandDiffSpawner::IndicesArray RandDiffSpawner::SpawnRandomIndices
     (const VisibleCellsCount size) const noexcept
 {

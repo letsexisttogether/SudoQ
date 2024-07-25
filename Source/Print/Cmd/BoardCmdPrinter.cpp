@@ -18,18 +18,34 @@ void BoardCmdPrinter::PrintBoard(const Board& board) const noexcept
 
     const Board::Grid& grid = board.GetRawGrid();
 
-    std::cout << "The board:\n";
+    std::cout << "The board:\n  ";
 
     for (Board::RCIndex i = 0; i < Board::GridMaxIndex; ++i)
     {
         if (m_IsFrame && !(i % 3))
         {
-            std::cout << "+-------+-------+-------+\n";
+            std::cout << "  ";
+        }
+
+        std::cout << i + 1 << ' ';
+    }
+
+    std::cout << '\n';
+
+    for (Board::RCIndex i = 0; i < Board::GridMaxIndex; ++i)
+    {
+
+        if (m_IsFrame && !(i % 3))
+        {
+            std::cout << "  +-------+-------+-------+\n" << i + 1 << ' ';
+        }
+        else 
+        {
+            std::cout << i + 1 << ' ';
         }
 
         for (Board::RCIndex j = 0; j < Board::GridMaxIndex; ++j)
         {
-
             if (m_IsFrame && !(j % 3))
             {
                 std::cout << "| ";
@@ -48,5 +64,8 @@ void BoardCmdPrinter::PrintBoard(const Board& board) const noexcept
         std::cout << ((m_IsFrame) ? ('|') : (' ')) << '\n';
     }
 
-    std::cout << "+-------+-------+-------+" << std::endl;
+    if (m_IsFrame)
+    {
+        std::cout << "  +-------+-------+-------+" << std::endl;
+    }
 }

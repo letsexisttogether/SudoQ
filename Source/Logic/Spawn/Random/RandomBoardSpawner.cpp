@@ -86,4 +86,3 @@ void RandomBoardSpawner::UnsetValue(const ByteValue byteValue,
     columnValue &= ~byteValue;
     tripleValue &= ~byteValue; 
 }
-
