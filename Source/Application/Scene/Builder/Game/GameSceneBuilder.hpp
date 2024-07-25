@@ -34,7 +34,6 @@ public:
 protected:
     void CreateIfOut() noexcept override;
 
-
 private:
     std::shared_ptr<GameScene> m_Scene{};
 

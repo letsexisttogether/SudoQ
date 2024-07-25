@@ -24,19 +24,14 @@ void GameScene::UpdateGraphic() noexcept
     m_Printer->PrintBoard(m_Board);
 }
 
-void GameScene::SetPrinter(BoardPrinter* printer) noexcept
-{
-    m_Printer.reset(printer);
-}
-
 BoardPrinter* const GameScene::GetPrinter() noexcept
 {
     return m_Printer.get();
 }
 
-void GameScene::SetBoard(Board&& board) noexcept
+void GameScene::SetPrinter(BoardPrinter* printer) noexcept
 {
-    m_Board = std::move(board);
+    m_Printer.reset(printer);
 }
 
 const Board& GameScene::GetBoard() const noexcept
@@ -44,9 +39,9 @@ const Board& GameScene::GetBoard() const noexcept
     return m_Board;
 }
 
-void GameScene::SetInputTaker(InputTaker* inputTaker) noexcept
+void GameScene::SetBoard(Board&& board) noexcept
 {
-    m_InputTaker.reset(inputTaker);
+    m_Board = std::move(board);
 }
 
 InputTaker* const GameScene::GetInputTaker() noexcept
@@ -54,14 +49,19 @@ InputTaker* const GameScene::GetInputTaker() noexcept
     return m_InputTaker.get();
 }
 
-void GameScene::SetInputHandler(InputHandler* inputHandler) noexcept
+void GameScene::SetInputTaker(InputTaker* inputTaker) noexcept
 {
-    m_InputHandler.reset(inputHandler);
+    m_InputTaker.reset(inputTaker);
 }
 
 InputHandler* const GameScene::GetInputHandler() noexcept
 {
     return m_InputHandler.get();
+}
+
+void GameScene::SetInputHandler(InputHandler* inputHandler) noexcept
+{
+    m_InputHandler.reset(inputHandler);
 }
 
 void GameScene::SetInputValue(const BoardCell& inputValue) noexcept
@@ -101,4 +101,3 @@ bool GameScene::IsWinCondition() const noexcept
 
     return true;
 }
-

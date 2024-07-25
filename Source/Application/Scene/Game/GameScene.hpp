@@ -21,17 +21,17 @@ public:
     void UpdateLogic() noexcept override;
     void UpdateGraphic() noexcept override;
 
-    void SetPrinter(BoardPrinter* printer) noexcept;
     BoardPrinter* const GetPrinter() noexcept;
+    void SetPrinter(BoardPrinter* printer) noexcept;
 
-    void SetBoard(Board&& board) noexcept;
     const Board& GetBoard() const noexcept;
+    void SetBoard(Board&& board) noexcept;
 
-    void SetInputTaker(InputTaker* inputTaker) noexcept;
     InputTaker* const GetInputTaker() noexcept;
+    void SetInputTaker(InputTaker* inputTaker) noexcept;
 
-    void SetInputHandler(InputHandler* inputHandler) noexcept;
     InputHandler* const GetInputHandler() noexcept;
+    void SetInputHandler(InputHandler* inputHandler) noexcept;
 
     void SetInputValue(const BoardCell& inputValue) noexcept;
 
