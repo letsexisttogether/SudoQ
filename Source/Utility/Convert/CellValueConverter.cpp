@@ -5,4 +5,3 @@ CellValueConverter::ByteValue CellValueConverter::GetByteValue
 {
     return (0b1 << value);
 }
-

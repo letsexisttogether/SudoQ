@@ -1,9 +1,10 @@
 #include "CmdVictoryHandler.hpp"
 
+#include <iostream>
+
 #include "Application/Application.hpp"
 #include "Application/Scene/Game/GameScene.hpp"
 
-#include <iostream>
 
 CmdVictoryHandler::CmdVictoryHandler(Message&& victoryMessage)
     : VictoryHandler{ std::move(victoryMessage) }

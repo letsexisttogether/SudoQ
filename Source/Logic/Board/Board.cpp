@@ -42,4 +42,3 @@ const Board::Grid& Board::GetRawGrid() const noexcept
 {
     return m_Grid;
 }
-

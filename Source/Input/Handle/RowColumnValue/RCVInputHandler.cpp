@@ -48,4 +48,3 @@ bool RCVInputHandler::CanHandle(const HandleData& data) const noexcept
 
     return std::regex_match(data, pattern);
 }
-

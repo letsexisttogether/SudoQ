@@ -11,4 +11,3 @@ std::istream& operator>>(std::istream& stream, BoardCell& cell)
 
     return stream;
 }
-
